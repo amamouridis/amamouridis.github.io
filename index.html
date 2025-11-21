@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <title>Portfolio – Angelos Mamouridis</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-      /* ---------- THEME VARIABLES ---------- */
+<style>
+
+/* ---------- THEME VARIABLES ---------- */
 
 :root {
     --bg: #f6f7fb;
@@ -24,16 +25,52 @@
 body {
     background-color: var(--bg);
     color: var(--text);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
 }
 
-.project-card,
-.hero,
-.certificate-card {
-    background-color: var(--card-bg);
-    box-shadow: var(--shadow);
+/* ---------- GLOBAL LAYOUT ---------- */
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 16px 48px;
 }
 
-/* ---------- iPhone Toggle Switch ---------- */
+/* ---------- HEADER ---------- */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    padding: 14px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+/* NAV */
+
+nav a {
+    margin-left: 24px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* DARK MODE TOGGLE */
+
 .header-right {
     display: flex;
     align-items: center;
@@ -56,8 +93,7 @@ body {
 .slider {
     position: absolute;
     cursor: pointer;
-    top: 0; left: 0;
-    right: 0; bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     background-color: #ccc;
     transition: .3s;
     border-radius: 34px;
@@ -78,145 +114,250 @@ body {
 input:checked + .slider {
     background-color: #4f46e5;
 }
-
 input:checked + .slider:before {
     transform: translateX(22px);
 }
 
+/* ---------- HERO ---------- */
 
-    </style>
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 32px;
+    padding: 32px 24px;
+    background-color: var(--card-bg);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    margin-bottom: 40px;
+}
+
+.hero-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.highlight {
+    color: #2563eb;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+/* ---------- PROJECTS ---------- */
+
+.project-grid, .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 16px;
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: var(--shadow);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+}
+
+.project-banner {
+    height: 140px;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #eee;
+}
+.project-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ---------- CERTIFICATES ---------- */
+
+#certificates {
+    margin-top: 40px;
+}
+
+.certificate-card {
+    background: var(--card-bg);
+    padding: 16px;
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    max-width: 400px;
+}
+
+.certificate-card img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+/* ---------- CONTACT ---------- */
+
+.contact-list li {
+    list-style: none;
+    margin-bottom: 6px;
+}
+
+/* ---------- FOOTER ---------- */
+
+footer {
+    text-align: center;
+    padding-top: 24px;
+    font-size: 0.8rem;
+    color: var(--text);
+}
+
+</style>
 </head>
+
 <body>
+
 <div class="container">
-    <header>
-        <div class="logo">Angelos Mamouridis</div>
+
+<header>
+    <div class="logo">Angelos Mamouridis</div>
+
+    <div class="header-right">
         <nav>
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </nav>
 
-        <!-- iPhone style toggle -->
         <label class="switch">
             <input type="checkbox" id="themeToggle">
             <span class="slider"></span>
         </label>
+    </div>
+</header>
 
-    </header>
 
-    <main>
-        <!-- HERO -->
-        <section class="hero">
-            <div class="hero-text">
-                <h1>
-                    <span>Γεια σου, είμαι</span>
-                    <span>Angelos Mamouridis</span>
-                </h1>
-                <div class="highlight">C / C++ Developer & Web Dev</div>
-                <p>
-                    Ασχολούμαι με προγραμματισμό σε C και C++, φτιάχνω projects όπως chess engine
-                    και web εφαρμογές, και ψάχνομαι για πρακτική / συνεργασίες.
-                </p>
+<main>
+
+<section class="hero">
+    <div class="hero-text">
+        <h1>
+            <span>Γεια σου, είμαι</span>
+            <span>Angelos Mamouridis</span>
+        </h1>
+        <div class="highlight">C / C++ Developer & Web Dev</div>
+        <p>
+            Ασχολούμαι με προγραμματισμό σε C και C++, φτιάχνω projects όπως chess engine
+            και web εφαρμογές, και ψάχνομαι για πρακτική / συνεργασίες.
+        </p>
+    </div>
+
+    <div class="hero-photo">
+        <span>A</span>
+    </div>
+</section>
+
+
+<section id="about">
+    <h2>About Me</h2>
+    <p>
+        Είμαι φοιτητής Πληροφορικής και ασχολούμαι με low-level (C/C++) και web development.
+        Μου αρέσει να λύνω προβλήματα, να βελτιώνω τον κώδικα μου και να μαθαίνω νέα εργαλεία.
+    </p>
+</section>
+
+
+<section id="projects">
+    <h2>Projects</h2>
+
+    <div class="projects-grid">
+
+        <div class="project-card">
+            <div class="project-banner">
+                <img src="images/chess-engine.jpg" alt="Chess Engine Screenshot">
             </div>
-            <div class="hero-photo">
-                <span>A</span> <!-- βάλε αρχικό ονόματος ή avatar -->
-            </div>
-        </section>
-
-        <!-- ABOUT -->
-        <section id="about">
-            <h2>About Me</h2>
-            <p>
-                Είμαι φοιτητής Πληροφορικής και ασχολούμαι με low-level (C/C++) και web development.
-                Μου αρέσει να λύνω προβλήματα, να βελτιώνω τον κώδικα μου και να μαθαίνω νέα εργαλεία.
-            </p>
-        </section>
-
-        <!-- PROJECTS -->
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-banner">
-                        <img src="images/chess-engine.jpg" alt="Chess Engine Screenshot">
-                    </div>
-                    <h3>Chess Engine</h3>
-                    <p>Μηχανή σκακιού σε C++ με υλοποίηση βασικών αλγορίθμων αναζήτησης.</p>
-                    <a href="https://github.com/amamouridis/chess-engine" target="_blank">
-                        Δες το στο GitHub
-                    </a>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-banner">
-                        <img src="images/demoshop.jpg" alt="Demoshop Screenshot">
-                    </div>
-                    <h3>Demoshop</h3>
-                    <p>Full-stack e-shop demo με καλάθι, παραγγελίες και αποστολή email.</p>
-                <a href="https://github.com/amamouridis/demoshop"  target="_blank">
-                        Δες το στο GitHub
-                    </a>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-banner">
-                        <img src="images/banner1.jpg" alt="EduPack Screenshot">
-                    </div>
-                    <h3>EduPack</h3>
-                    <p>Εκπαιδευτική πλατφόρμα για διαχείριση ασκήσεων και υλικού μαθημάτων.</p>
-                    <a href="https://github.com/USERNAME/EduPack" target="_blank">
-                        Δες το στο GitHub
-                    </a>
-                </div>
-            </div>
-        </section>
-        <h2>Certificates</h2>
-        <div class="certificate-card">
-            <img src="images/certificate.jpg" alt="Certificate">
-            <p>Hack the Football Data & Programming Summer School – 2025</p>
+            <h3>Chess Engine</h3>
+            <p>Μηχανή σκακιού σε C++ με αλγορίθμους αναζήτησης.</p>
+            <a href="https://github.com/amamouridis/chess-engine" target="_blank">Δες το στο GitHub</a>
         </div>
 
-        <!-- CONTACT -->
-        <section id="contact">
-            <h2>Contact</h2>
-            <ul class="contact-list">
-                <li>Email: <a href="mailto:amamouridis.dev@gmail.com">amamouridis.dev@gmail.com</a></li>
-                <li>GitHub: <a href="https://github.com/amamouridis" target="_blank">amamouridis</a></li>
-                <li>LinkedIn: 
-                    <a href="https://www.linkedin.com/in/angelos-mamouridis" target="_blank">
-                        www.linkedin.com/in/angelos-mamouridis
-                    </a>
-                </li>
-            </ul>
-        </section>
-    </main>
+        <div class="project-card">
+            <div class="project-banner">
+                <img src="images/demoshop.jpg" alt="Demoshop Screenshot">
+            </div>
+            <h3>Demoshop</h3>
+            <p>Full-stack e-shop με καλάθι, παραγγελίες και email.</p>
+            <a href="https://github.com/amamouridis/demoshop" target="_blank">Δες το στο GitHub</a>
+        </div>
 
-    <footer>
-        &copy; <span id="year"></span> Angelos Mamouridis. All rights reserved.
-    </footer>
+        <div class="project-card">
+            <div class="project-banner">
+                <img src="images/banner1.jpg" alt="EduPack Screenshot">
+            </div>
+            <h3>EduPack</h3>
+            <p>Πλατφόρμα για εκπαιδευτικό υλικό.</p>
+            <a href="https://github.com/amamouridis/EduPack" target="_blank">Δες το στο GitHub</a>
+        </div>
+
+    </div>
+</section>
+
+
+<section id="certificates">
+    <h2>Certificates</h2>
+    <div class="certificate-card">
+        <img src="images/certificate.jpg" alt="Certificate">
+        <p>Hack the Football Data & Programming Summer School – 2025</p>
+    </div>
+</section>
+
+
+<section id="contact">
+    <h2>Contact</h2>
+    <ul class="contact-list">
+        <li>Email: <a href="mailto:amamouridis.dev@gmail.com">amamouridis.dev@gmail.com</a></li>
+        <li>GitHub: <a href="https://github.com/amamouridis" target="_blank">amamouridis</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/angelos-mamouridis" target="_blank">www.linkedin.com/in/angelos-mamouridis</a></li>
+    </ul>
+</section>
+
+</main>
+
+
+<footer>
+    &copy; <span id="year"></span> Angelos Mamouridis. All rights reserved.
+</footer>
+
 </div>
 
 <script>
-    const toggle = document.getElementById("themeToggle");
+const toggle = document.getElementById("themeToggle");
 
-    // Load saved theme
-    if (localStorage.getItem("theme") === "dark") {
-        document.body.classList.add("dark");
-        toggle.checked = true;
-    }
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    toggle.checked = true;
+}
 
-    // Toggle theme
-    toggle.addEventListener("change", () => {
-        document.body.classList.toggle("dark");
+toggle.addEventListener("change", () => {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("theme",
+        document.body.classList.contains("dark") ? "dark" : "light"
+    );
+});
 
-        if (document.body.classList.contains("dark")) {
-            localStorage.setItem("theme", "dark");
-        } else {
-            localStorage.setItem("theme", "light");
-        }
-    });
-
-    document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("year").textContent = new Date().getFullYear();
 </script>
+
 </body>
 </html>
